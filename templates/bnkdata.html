@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}BNK数据{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="table-responsive" style="width: 1200px; height: 800px; overflow: auto;">
+        <table class="table table-hover text-nowrap">
+            <thead>
+            <tr>
+                <td>零件号</td>
+                <td>无色标零件号</td>
+                <td>供应商号</td>
+                <td>工厂</td>
+                <td>SUPPLIER_ID</td>
+                <td>单位</td>
+                <td>运输费(原始)</td>
+                <td>操作费(原始)</td>
+                <td>包装费(原始)</td>
+                <td>运输费(最新)</td>
+                <td>运输费(服务商)</td>
+                <td>操作费(最新)</td>
+                <td>操作费(服务商)</td>
+                <td>包装费(最新)</td>
+                <td>包装费(服务商)</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for partnumA, partnumB, supplier, plant, supplierid, unit, freightorg, operationorg, packageorg,
+            freightnew,
+            freightsup, operationnew, operationsup, packagenew, packagesup in data%}
+            <tr>
+                <td>
+                    {{partnumA}}
+                </td>
+                <td>
+                    {{partnumB}}
+                </td>
+                <td>
+                    {{supplier}}
+                </td>
+                <td>
+                    {{plant}}
+                </td>
+                <td>
+                    {{supplierid}}
+                </td>
+                <td>
+                    {{unit}}
+                </td>
+                <td>
+                    {{freightorg}}
+                </td>
+                <td>
+                    {{operationorg}}
+                </td>
+                <td>
+                    {{packageorg}}
+                </td>
+                <td>
+                    {{freightnew}}
+                </td>
+                <td>
+                    {{freightsup}}
+                </td>
+                <td>
+                    {{operationnew}}
+                </td>
+                <td>
+                    {{operationsup}}
+                </td>
+                <td>
+                    {{packagenew}}
+                </td>
+                <td>
+                    {{packagesup}}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
