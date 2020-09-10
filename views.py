@@ -48,7 +48,7 @@ def upload():
         file_name = form.file.data.filename
         file_path = 'uploads/' + file_name
         form.file.data.save(file_path)
-        flash('文件上传成功：' + file_name)
+        flash('文件上传成功：' + file_name, category='success')
         return redirect(url_for('upload'))
     return render_template('upload.html', uploadform=form)
 
