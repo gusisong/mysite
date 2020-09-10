@@ -4,11 +4,9 @@
 
 {% block content %}
 <div class="container">
+        {{super()}}
     <div class="page-header">
-        {{ wtf.quick_form(form) }}
-    </div>
-    <div>
-        {{upload_status}}
+        {{wtf.quick_form(uploadform, button_map={'submit':'primary'})}}
     </div>
 </div>
 {% endblock %}
