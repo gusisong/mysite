@@ -45,16 +45,6 @@ def upload():
         return render_template('upload.html', form=form, upload_status=status)
     return render_template('upload.html', form=form)
 
-    # if request.method == 'POST':
-    #     if request.files:
-    #         f = request.files['file']
-    #         f.save('uploads/' + f.filename)
-    #         status = '文件上传成功: ' + f.filename
-    #         return render_template('upload.html', upload_status=status)
-    #     status = '请选择上传文件'
-    #     return render_template('upload.html', upload_status=status)
-    # return render_template('upload.html')
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
