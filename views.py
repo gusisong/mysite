@@ -2,14 +2,31 @@ from flask import Flask, render_template, redirect, session, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired
+from wtforms.validators import DataRequired
 from wtforms import FileField, SubmitField, TextAreaField
-from wtforms.validators import Required
+from flask_sqlalchemy import SQLAlchemy
+import os
 import csv
+
+# basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
-bootstrap = Bootstrap(app)
 app.config['SECRET_KEY'] = '986v3n90d567cxn95n76vg74m'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+# app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+
+bootstrap = Bootstrap(app)
+# db = SQLAlchemy(app)
+
+
+# class Supplier(db.Model):
+#     __tablename__ = 'suppliers'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(64), unique=True)
+#
+#     def __repr__(self):
+#         return '<Supplier {}>'.format(self.name)
 
 
 class UploadForm(FlaskForm):
@@ -18,8 +35,8 @@ class UploadForm(FlaskForm):
 
 
 class TextForm(FlaskForm):
-    content = TextAreaField('正文内容', validators=[Required()])
-    signature = TextAreaField('邮件签名', validators=[Required()])
+    content = TextAreaField('正文内容', validators=[DataRequired()])
+    signature = TextAreaField('邮件签名', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 
